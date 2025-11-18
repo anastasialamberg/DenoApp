@@ -1,5 +1,5 @@
 
-import { CreateRouter } from "../lib/create-app.js";
+import { CreateRouter } from "../lib/create-app";
 import { createRoute, z } from "@hono/zod-openapi";
 import { jsonContent } from "stoker/openapi/helpers";
 import * as HttpstatusCodes from "stoker/http-status-codes";

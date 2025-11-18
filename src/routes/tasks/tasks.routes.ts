@@ -1,7 +1,7 @@
-import { selectTaskSchema } from "../../db/schema.js";
-import { insertTaskSchema } from "../../db/schema.js";
-import { notFoundSchema } from "../../lib/constants.js";
-import { patchTaskSchema } from "../../db/schema.js";
+import { selectTaskSchema } from "../../db/schema";
+import { insertTaskSchema } from "../../db/schema";
+import { notFoundSchema } from "../../lib/constants";
+import { patchTaskSchema } from "../../db/schema";
 import { createRoute, z } from "@hono/zod-openapi";
 import * as HttpStatusCodes from "stoker/http-status-codes";
 import { jsonContent, jsonContentOneOf, jsonContentRequired } from "stoker/openapi/helpers";

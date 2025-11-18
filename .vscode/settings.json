@@ -1,0 +1,13 @@
+{
+
+  "editor.formatOnSave": true,
+  "deno.enable": true,
+
+  "cSpell.words": [
+    "Hono",
+    "openapi"
+  ]
+ 
+
+  
+}

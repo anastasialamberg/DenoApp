@@ -1,8 +1,8 @@
 
-import type { ListRoute, CreateRoute, GetOneRoute, PatchRoute, RemoveRoute } from './tasks.routes.js';
-import type { AppBindings, AppRouteHandler } from '../../lib/types.js';
-import db from "../../db/index.js"
-import { tasks } from '../../db/schema.js';
+import type { ListRoute, CreateRoute, GetOneRoute, PatchRoute, RemoveRoute } from './tasks.routes';
+import type { AppBindings, AppRouteHandler } from '../../lib/types';
+import db from "../../db/index"
+import { tasks } from '../../db/schema.ts';
 import * as HttpStatusCodes from "stoker/http-status-codes";
 import * as HttpStatusPharases from "stoker/http-status-phrases";
 import { eq } from "drizzle-orm";
