@@ -1,11 +1,11 @@
 {
   "tasks": {
-    "dev": "deno serve --watch --allow-net --allow-read  --allow-ffi--allow-env --env-file --allow-sys src/app.ts",
-    "test": "deno test src/",
+    "dev": "deno serve --watch --allow-net --allow-read  --allow-ffi --allow-env --env-file --allow-sys src/app.ts",
+    "test": "deno test --allow-env --allow-sys --allow-ffi --allow-net --env-file=.env.test src/",
     "db:push": "deno run --allow-net --node-modules-dir --allow-env --allow-read --allow-sys --allow-write --allow-run npm:drizzle-kit push",
     "db:push:test": "deno run --allow-net --node-modules-dir --allow-env --allow-read --allow-sys --allow-write --allow-run --env-file=.env.test npm:drizzle-kit push",
-    "db:dev": "turso dev --db-file dev.db",
-    "db.test": "touch  test.db && rm test.db* && turso dev -p 8181 --db-file test.db & (sleep 1 && deno task db:push:test )"
+    "db:dev": "turso dev --db-file dev.db"
+    
   },
   "imports": {
     "@/": "./src/",
@@ -13,6 +13,7 @@
     "@libsql/client": "npm:@libsql/client@^0.15.15",
     "@scalar/hono-api-reference": "npm:@scalar/hono-api-reference@^0.9.24",
     "@std/assert": "jsr:@std/assert@1",
+    "@std/expect": "jsr:@std/expect@^1.0.17",
     "drizzle-kit": "npm:drizzle-kit@^0.31.7",
     "drizzle-orm": "npm:drizzle-orm@^0.44.7",
     "drizzle-zod": "npm:drizzle-zod@^0.8.3",

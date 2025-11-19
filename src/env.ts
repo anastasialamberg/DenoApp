@@ -27,7 +27,7 @@ const { data: env, error } = EnvSchema.safeParse(Deno.env.toObject());
 if (error) {
   console.error("❌ Invalid env:");
   console.error(JSON.stringify(error.flatten().fieldErrors, null, 2));
-  process.exit(1);
+  Deno.exit(1);
 }
 
 export default env!;

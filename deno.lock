@@ -2,10 +2,14 @@
   "version": "5",
   "specifiers": {
     "jsr:@std/assert@1": "1.0.16",
+    "jsr:@std/assert@^1.0.14": "1.0.16",
+    "jsr:@std/expect@^1.0.17": "1.0.17",
+    "jsr:@std/internal@^1.0.10": "1.0.12",
     "jsr:@std/internal@^1.0.12": "1.0.12",
     "npm:@hono/zod-openapi@^1.1.4": "1.1.4_hono@4.10.6_zod@4.1.12",
     "npm:@libsql/client@~0.15.15": "0.15.15",
     "npm:@scalar/hono-api-reference@~0.9.24": "0.9.24_hono@4.10.6",
+    "npm:@types/node@*": "24.2.0",
     "npm:drizzle-kit@*": "0.31.7_esbuild@0.25.12",
     "npm:drizzle-kit@~0.31.7": "0.31.7_esbuild@0.25.12",
     "npm:drizzle-orm@~0.44.7": "0.44.7_@libsql+client@0.15.15",
@@ -21,7 +25,14 @@
     "@std/assert@1.0.16": {
       "integrity": "6a7272ed1eaa77defe76e5ff63ca705d9c495077e2d5fd0126d2b53fc5bd6532",
       "dependencies": [
-        "jsr:@std/internal"
+        "jsr:@std/internal@^1.0.12"
+      ]
+    },
+    "@std/expect@1.0.17": {
+      "integrity": "316b47dd65c33e3151344eb3267bf42efba17d1415425f07ed96185d67fc04d9",
+      "dependencies": [
+        "jsr:@std/assert@^1.0.14",
+        "jsr:@std/internal@^1.0.10"
       ]
     },
     "@std/internal@1.0.12": {
@@ -29,6 +40,12 @@
     }
   },
   "npm": {
+    "@asteasolutions/zod-to-openapi@8.1.0": {
+      "integrity": "sha512-tQFxVs05J/6QXXqIzj6rTRk3nj1HFs4pe+uThwE95jL5II2JfpVXkK+CqkO7aT0Do5AYqO6LDrKpleLUFXgY+g==",
+      "dependencies": [
+        "openapi3-ts"
+      ]
+    },
     "@asteasolutions/zod-to-openapi@8.1.0_zod@4.1.12": {
       "integrity": "sha512-tQFxVs05J/6QXXqIzj6rTRk3nj1HFs4pe+uThwE95jL5II2JfpVXkK+CqkO7aT0Do5AYqO6LDrKpleLUFXgY+g==",
       "dependencies": [
@@ -298,7 +315,7 @@
     "@hono/zod-openapi@1.1.4_hono@4.10.6_zod@4.1.12": {
       "integrity": "sha512-4BbOtd6oKg20yo6HLluVbEycBLLIfdKX5o/gUSoKZ2uBmeP4Og/VDfIX3k9pbNEX5W3fRkuPeVjGA+zaQDVY1A==",
       "dependencies": [
-        "@asteasolutions/zod-to-openapi",
+        "@asteasolutions/zod-to-openapi@8.1.0_zod@4.1.12",
         "@hono/zod-validator",
         "hono",
         "openapi3-ts",
@@ -763,10 +780,12 @@
     "stoker@2.0.1_@hono+zod-openapi@1.1.4__hono@4.10.6__zod@4.1.12_hono@4.10.6_zod@4.1.12": {
       "integrity": "sha512-liSQNnJmn8fWSEan7sVaFe6iSHuN3X02fDGLS6snwW+FUuKi5HmKUHm3P+Kzr5xiDPqRpmSTtmGEBbSL9H2zkQ==",
       "dependencies": [
+        "@asteasolutions/zod-to-openapi@8.1.0",
         "@hono/zod-openapi",
         "hono"
       ],
       "optionalPeers": [
+        "@asteasolutions/zod-to-openapi@8.1.0",
         "@hono/zod-openapi"
       ]
     },
@@ -814,6 +833,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@1",
+      "jsr:@std/expect@^1.0.17",
       "npm:@hono/zod-openapi@^1.1.4",
       "npm:@libsql/client@~0.15.15",
       "npm:@scalar/hono-api-reference@~0.9.24",

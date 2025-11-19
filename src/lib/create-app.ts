@@ -1,5 +1,5 @@
-import { OpenAPIHono } from '@hono/zod-openapi'
-
+import { OpenAPIHono } from "@hono/zod-openapi";
+import type { Schema } from "hono";
 import { notFound, onError, serveEmojiFavicon } from 'stoker/middlewares';
 import pinoLogger from '../middlewares/pino-logger.ts';
 import type { AppBindings, AppOpenAPI } from './types.ts';
@@ -26,8 +26,6 @@ export default function CreateApp() {
     return app;
 }
 
-export function CreateTestApp(router: AppOpenAPI) {
-    const testApp = CreateApp();
-    testApp.route('/', router);
-    return testApp;
+export function CreateTestApp<S extends Schema>(router: AppOpenAPI<S>) {
+  return CreateApp().route("/", router);
 }
