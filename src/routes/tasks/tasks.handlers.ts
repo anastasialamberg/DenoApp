@@ -1,6 +1,6 @@
 
 import type { ListRoute, CreateRoute, GetOneRoute, PatchRoute, RemoveRoute } from './tasks.routes.ts';
-import type { AppBindings, AppRouteHandler } from '../../lib/types.ts';
+import type { AppRouteHandler } from '../../lib/types.ts';
 import db from "../../db/index.ts"
 import { tasks } from '../../db/schema.ts';
 import * as HttpStatusCodes from "stoker/http-status-codes";

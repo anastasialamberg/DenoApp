@@ -846,11 +846,6 @@
       "npm:pino@^10.1.0",
       "npm:stoker@^2.0.1",
       "npm:zod@^4.1.12"
-    ],
-    "packageJson": {
-      "dependencies": [
-        "npm:zod@^4.1.12"
-      ]
-    }
+    ]
   }
 }
