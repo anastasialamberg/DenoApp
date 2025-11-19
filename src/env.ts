@@ -1,8 +1,6 @@
 
 import { z } from "zod";
 
-
-
 const EnvSchema = z.object({
   NODE_ENV: z.string().default("development"),
   PORT: z.coerce.number().default(9999),
@@ -24,7 +22,7 @@ const EnvSchema = z.object({
 export type env = z.infer<typeof EnvSchema>;
 
 // eslint-disable-next-line ts/no-redeclare
-const { data: env, error } = EnvSchema.safeParse(DelayNode.env.toObject());
+const { data: env, error } = EnvSchema.safeParse(Deno.env.toObject());
 
 if (error) {
   console.error("❌ Invalid env:");

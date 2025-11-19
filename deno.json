@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "deno serve --watch --allow-net --allow-env --env-file --allow-sys src/app.ts",
+    "dev": "deno serve --watch --allow-net --allow-read  --allow-ffi--allow-env --env-file --allow-sys src/app.ts",
     "test": "deno test src/",
     "db:push": "deno run --allow-net --node-modules-dir --allow-env --allow-read --allow-sys --allow-write --allow-run npm:drizzle-kit push",
     "db:push:test": "deno run --allow-net --node-modules-dir --allow-env --allow-read --allow-sys --allow-write --allow-run --env-file=.env.test npm:drizzle-kit push",

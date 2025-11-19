@@ -1,4 +1,4 @@
-import { drizzle } from 'drizzle-orm/libsql';
+import { drizzle } from 'drizzle-orm/sqlite';
 import { createClient } from '@libsql/client';
 import env from '../env.ts';
 import * as schema from "./schema.ts";
