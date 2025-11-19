@@ -9,7 +9,7 @@ import { CreateTestApp} from "../../lib/create-app.ts";
 
 import router from "./tasks.index.ts";
 import {Task} from "../../lib/types.ts"
-import { startTestDb, stopTestDb } from "../../lib/test-helpers.ts";
+import { startTestDB, stopTestDB } from "../../lib/test-helpers.ts";
 
 
 if (env.NODE_ENV !== "test") {
@@ -21,7 +21,7 @@ const client = testClient(CreateTestApp(router));
   const name = "Learn vitest";
 
 Deno.test("tasks routes", async (t) => {
-  const testDbProcess = await startTestDb();
+  const testDbProcess = await startTestDB();
 
   await t.step("post /tasks validates the body when creating", async () => {
     const response = await client.tasks.$post({
@@ -193,5 +193,5 @@ Deno.test("tasks routes", async (t) => {
     expect(response.status).toBe(204);
   });
 
-  await stopTestDb(testDbProcess);
+  await stopTestDB(testDbProcess);
 });
