@@ -1,7 +1,7 @@
 import { logger } from "hono-pino";
 import pino from "pino";
 import pretty from "pino-pretty";
-import env from "../env";
+import env from "../env.ts";
 
 export default function pinoLogger() {
     return logger({

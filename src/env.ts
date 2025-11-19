@@ -1,15 +1,7 @@
-/* eslint-disable node/no-process-env */
-import { config } from "dotenv";
-import { expand } from "dotenv-expand";
-import path from "node:path";
+
 import { z } from "zod";
 
-expand(config({
-  path: path.resolve(
-    process.cwd(),
-    process.env.NODE_ENV === "test" ? ".env.test" : ".env",
-  ),
-}));
+
 
 const EnvSchema = z.object({
   NODE_ENV: z.string().default("development"),
@@ -32,7 +24,7 @@ const EnvSchema = z.object({
 export type env = z.infer<typeof EnvSchema>;
 
 // eslint-disable-next-line ts/no-redeclare
-const { data: env, error } = EnvSchema.safeParse(process.env);
+const { data: env, error } = EnvSchema.safeParse(DelayNode.env.toObject());
 
 if (error) {
   console.error("❌ Invalid env:");

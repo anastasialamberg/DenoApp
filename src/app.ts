@@ -1,7 +1,7 @@
-import createApp from "./lib/create-app";
-import index from "./routes/index.route";
-import configureOpenAPI from "./lib/configure-open-api";
-import tasks from "./routes/tasks/tasks.index";
+import createApp from "./lib/create-app.ts";
+import index from "./routes/index.route.ts";
+import configureOpenAPI from "./lib/configure-open-api.ts";
+import tasks from "./routes/tasks/tasks.index.ts";
 
 const app = createApp();
 

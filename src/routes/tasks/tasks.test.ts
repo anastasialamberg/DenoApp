@@ -2,8 +2,8 @@
 import { testClient } from "hono/testing";
 import { describe, expect, expectTypeOf, it } from "vitest";
 
-import CreateApp, { CreateTestApp } from "../../lib/create-app";
-import router from "./tasks.index";
+import CreateApp, { CreateTestApp } from "../../lib/create-app.ts";
+import router from "./tasks.index.ts";
 
 describe("tasks list", () => {
   it("responds with an array", async () => {

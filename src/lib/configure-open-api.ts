@@ -1,15 +1,15 @@
 import { Scalar } from "@scalar/hono-api-reference";
 
-import type { AppOpenAPI } from "./types";
+import type { AppOpenAPI } from "./types.ts";
 
-import packageJSON from "../../package.json" with { type: "json" };
+import packageJSON from "../../deno.json" with { type: "json" };
 
 export default function configureOpenAPI(app: AppOpenAPI) {
   app.doc("/doc", {
     openapi: "3.0.0",
     info: {
-      title: "Tasks API",
       version: packageJSON.version,
+      title: "Tasks API",
     },
   });
 
