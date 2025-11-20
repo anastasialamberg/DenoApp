@@ -1,11 +1,12 @@
 {
+ "version": "1.0.0",
   "tasks": {
-    "dev": "deno serve --watch --allow-net --allow-read  --allow-ffi --allow-env --env-file --allow-sys src/app.ts",
-    "test": "deno test --allow-env --allow-sys --allow-run=deno,turso --allow-ffi --allow-net --env-file=.env.test src/",
+    "dev": "deno serve --watch --allow-net --allow-env --env-file --allow-sys src/app.ts",
+    "test": "deno test --allow-read  --allow-ffi --allow-write --allow-run --allow-env --allow-net --allow-sys --env-file=.env.test src/",
     "db:push": "deno run --allow-net --node-modules-dir --allow-env --allow-read --allow-sys --allow-write --allow-run npm:drizzle-kit push",
     "db:push:test": "deno run --allow-net --node-modules-dir --allow-env --allow-read --allow-sys --allow-write --allow-run --env-file=.env.test npm:drizzle-kit push",
     "db:dev": "turso dev --db-file dev.db",
-    "lint" : "deno lint",
+    "lint": "deno lint",
     "format": "deno fmt",
     "typecheck": "deno check **/*.ts"
 

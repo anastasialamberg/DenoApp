@@ -7,6 +7,7 @@
     "jsr:@std/internal@^1.0.10": "1.0.12",
     "jsr:@std/internal@^1.0.12": "1.0.12",
     "npm:@hono/zod-openapi@^1.1.4": "1.1.4_hono@4.10.6_zod@4.1.12",
+    "npm:@libsql/client@*": "0.15.15",
     "npm:@libsql/client@~0.15.15": "0.15.15",
     "npm:@scalar/hono-api-reference@~0.9.24": "0.9.24_hono@4.10.6",
     "npm:@types/node@*": "24.2.0",
