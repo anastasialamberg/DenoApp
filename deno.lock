@@ -1,6 +1,7 @@
 {
   "version": "5",
   "specifiers": {
+    "jsr:@hono/hono@^4.10.6": "4.10.6",
     "jsr:@std/assert@1": "1.0.16",
     "jsr:@std/assert@^1.0.14": "1.0.16",
     "jsr:@std/expect@^1.0.17": "1.0.17",
@@ -15,14 +16,15 @@
     "npm:drizzle-kit@~0.31.7": "0.31.7_esbuild@0.25.12",
     "npm:drizzle-orm@~0.44.7": "0.44.7_@libsql+client@0.15.15",
     "npm:drizzle-zod@~0.8.3": "0.8.3_drizzle-orm@0.44.7__@libsql+client@0.15.15_zod@4.1.12_@libsql+client@0.15.15",
-    "npm:hono-pino@~0.10.3": "0.10.3_hono@4.10.6_pino@10.1.0",
-    "npm:hono@^4.10.6": "4.10.6",
     "npm:pino-pretty@^13.1.2": "13.1.2",
     "npm:pino@^10.1.0": "10.1.0",
     "npm:stoker@^2.0.1": "2.0.1_@hono+zod-openapi@1.1.4__hono@4.10.6__zod@4.1.12_hono@4.10.6_zod@4.1.12",
     "npm:zod@^4.1.12": "4.1.12"
   },
   "jsr": {
+    "@hono/hono@4.10.6": {
+      "integrity": "bcbbf9753a3570f2fa4609484bae0cead85a3feb110ee9ceb7ffc37d845d9a4d"
+    },
     "@std/assert@1.0.16": {
       "integrity": "6a7272ed1eaa77defe76e5ff63ca705d9c495077e2d5fd0126d2b53fc5bd6532",
       "dependencies": [
@@ -477,9 +479,6 @@
         "ms"
       ]
     },
-    "defu@6.1.4": {
-      "integrity": "sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg=="
-    },
     "detect-libc@2.0.2": {
       "integrity": "sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw=="
     },
@@ -611,14 +610,6 @@
     },
     "help-me@5.0.0": {
       "integrity": "sha512-7xgomUX6ADmcYzFik0HzAxh/73YlKR9bmFzf51CZwR+b6YtzU2m0u49hQCqV6SvlqIqsaxovfwdvbnsw3b/zpg=="
-    },
-    "hono-pino@0.10.3_hono@4.10.6_pino@10.1.0": {
-      "integrity": "sha512-n0RNPIFOoq25Fg8b4D5gus4sVqI0z+8I17ibl96+p43d07UnZ0EMM/It0qSgfc7UtaC+XP5FkFmRHwBp6owsNA==",
-      "dependencies": [
-        "defu",
-        "hono",
-        "pino"
-      ]
     },
     "hono@4.10.6": {
       "integrity": "sha512-BIdolzGpDO9MQ4nu3AUuDwHZZ+KViNm+EZ75Ae55eMXMqLVhDFqEMXxtUe9Qh8hjL+pIna/frs2j6Y2yD5Ua/g=="
@@ -833,6 +824,8 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@hono/hono@^4.10.6",
+      "jsr:@maou-shonen/hono-pino@~0.10.3",
       "jsr:@std/assert@1",
       "jsr:@std/expect@^1.0.17",
       "npm:@hono/zod-openapi@^1.1.4",
@@ -841,8 +834,6 @@
       "npm:drizzle-kit@~0.31.7",
       "npm:drizzle-orm@~0.44.7",
       "npm:drizzle-zod@~0.8.3",
-      "npm:hono-pino@~0.10.3",
-      "npm:hono@^4.10.6",
       "npm:pino-pretty@^13.1.2",
       "npm:pino@^10.1.0",
       "npm:stoker@^2.0.1",

@@ -1,7 +1,7 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import type { Schema } from "hono";
 import { notFound, onError, serveEmojiFavicon } from "stoker/middlewares";
-import pinoLogger from "../middlewares/pino-logger.ts";
+import createPinoLogger from "../middlewares/pino-logger.ts";
 import type { AppBindings, AppOpenAPI } from "./types.ts";
 import { defaultHook } from "stoker/openapi";
 
@@ -17,7 +17,7 @@ export default function CreateApp() {
     strict: false,
   });
   app.use(serveEmojiFavicon("🚀"));
-  app.use(pinoLogger());
+  app.use(createPinoLogger());
 
   app.notFound(notFound);
   app.onError(onError);
