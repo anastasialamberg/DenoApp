@@ -4,12 +4,12 @@ import pretty from "pino-pretty";
 import env from "../env.ts";
 
 export default function pinoLogger() {
-    return logger({
-        pino: pino({
-            level: env.LOG_LEVEL || "info",
-        }, env.NODE_ENV === "production" ? undefined : pretty()),
-        http: {
-            reqId: () => crypto.randomUUID(),
-        }
-    });
+  return logger({
+    pino: pino({
+      level: env.LOG_LEVEL || "info",
+    }, env.NODE_ENV === "production" ? undefined : pretty()),
+    http: {
+      reqId: () => crypto.randomUUID(),
+    },
+  });
 }
