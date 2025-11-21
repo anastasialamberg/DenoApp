@@ -7,7 +7,6 @@
     "db:push:test": "deno run --allow-net --node-modules-dir --allow-env --allow-read --allow-sys --allow-write --allow-run --env-file=.env.test npm:drizzle-kit push",
     "db:dev": "turso dev --db-file dev.db",
     "dev:all": "deno run -A --node-modules-dir npm:concurrently --kill-others-on-fail \"deno task db:dev\" \"deno task dev\"",
-
     "lint": "deno lint",
     "format": "deno fmt",
     "typecheck": "deno check **/*.ts"
