@@ -1,4 +1,6 @@
+// deno-lint-ignore-file no-empty
 import env from "../env.ts";
+import { migrateTestDb } from "./migrate-test-db.ts";
 
 export const removeTestDb = async () => {
   try {
@@ -7,59 +9,60 @@ export const removeTestDb = async () => {
       args: ["test.db", "test.db-shm", "test.db-wal"],
     }).spawn();
     await cleanUp.status;
-    // deno-lint-ignore no-empty
   } catch {}
 };
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export const startTestDB = async (): Promise<Deno.ChildProcess> => {
   const testDbProcess = new Deno.Command("turso", {
     args: ["dev", "-p", "8181", "--db-file", "test.db"],
   }).spawn();
-  // wait for process to spin up before pushing schema
-  await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const pushDB = new Deno.Command("deno", {
-    args: ["task", "db:push:test"],
-  }).spawn();
-  await pushDB.status;
+  await waitForServer();
 
-  return new Promise((resolve) => {
-    const healthCheck = async () => {
-      try {
-        const response = await fetch(env.DATABASE_URL, {
-          method: "POST",
-          body: JSON.stringify({ "statements": ["select * from tasks"] }),
-        });
-        const json = await response.json();
-        if (json[0].results) {
-          console.log("DB available!");
-          resolve(testDbProcess);
-        } else {
-          setTimeout(healthCheck, 1000);
-        }
-      } catch {
-        console.log("Waiting for DB...");
-        setTimeout(healthCheck, 1000);
+  await migrateTestDb();
+
+  for (let attempt = 1; attempt <= 20; attempt++) {
+    try {
+      const response = await fetch(env.DATABASE_URL, {
+        method: "POST",
+        body: JSON.stringify({ statements: ["select * from tasks limit 1"] }),
+      });
+      const json = await response.json().catch(() => null);
+      response.body?.cancel().catch(() => {});
+      if (json?.[0]?.results) {
+        console.log("DB available!");
+        return testDbProcess;
       }
-    };
+    } catch {}
+    await sleep(500);
+  }
 
-    healthCheck();
-  });
+  throw new Error("Test DB not ready after migrations");
+};
+const waitForServer = async () => {
+  for (let attempt = 1; attempt <= 40; attempt++) {
+    try {
+      const res = await fetch(env.DATABASE_URL, {
+        method: "POST",
+        body: JSON.stringify({ statements: ["select 1"] }),
+      });
+      res.body?.cancel().catch(() => {});
+      if (res.ok) return;
+    } catch {}
+    await sleep(250);
+  }
+  throw new Error("Test DB server did not start in time");
 };
 
-export const stopTestDB = (testDbProcess: Deno.ChildProcess) => {
-  return new Promise((resolve) => {
-    const cleanup = async () => {
-      console.log("Cleaning up...");
-      try {
-        testDbProcess.kill();
-        await testDbProcess.status;
-        // deno-lint-ignore no-empty
-      } catch {}
-      await removeTestDb();
-      resolve(true);
-    };
 
-    setTimeout(cleanup, 500);
-  });
+
+export const stopTestDB = async (testDbProcess: Deno.ChildProcess) => {
+  try {
+    testDbProcess.kill();
+    await testDbProcess.status;
+  } catch {}
+
+  await removeTestDb();
 };

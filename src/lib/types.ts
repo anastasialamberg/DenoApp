@@ -3,14 +3,6 @@ import type { OpenAPIHono, RouteConfig, RouteHandler } from "@hono/zod-openapi";
 import type { Schema } from "hono";
 import type { PinoLogger } from "hono-pino";
 
-export type Task = {
-  id: number;
-  name: string;
-  done: boolean;
-  createdAt: string | null;
-  updateAt: string | null;
-};
-
 export interface AppBindings {
   Variables: {
     logger: PinoLogger;
